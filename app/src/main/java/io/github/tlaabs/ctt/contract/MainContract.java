@@ -1,5 +1,8 @@
 package io.github.tlaabs.ctt.contract;
 
-public interface MainContract {
+import io.github.tlaabs.ctt.model.Days;
 
+public interface MainContract {
+    void startEditActivityForAdd();
+//    void startEditActivityForModify();
 }

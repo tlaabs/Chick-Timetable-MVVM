@@ -36,9 +36,9 @@
                 android:layout_alignParentRight="true"
                 android:background="@android:color/transparent"
                 android:gravity="center"
-                android:onClick="@{viewModel::onAddClick}"
+                android:onClick="@{viewModel::menuAddClick}"
                 android:scaleType="center"
-                android:src="@drawable/ic_baseline_add_24px"
+                android:src="@drawable/ic_baseline_add_24dp"
                 android:tint="@color/colorMain" />
 
         </RelativeLayout>

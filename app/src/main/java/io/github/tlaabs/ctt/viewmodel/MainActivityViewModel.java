@@ -7,14 +7,14 @@ import android.view.View;
 import io.github.tlaabs.ctt.contract.MainContract;
 
 public class MainActivityViewModel {
-    public final ObservableInt highlightDay = new ObservableInt(1);
+    public final ObservableInt highlight = new ObservableInt(1);
     private final MainContract mainView;
 
-    public MainActivityViewModel(MainContract mainView){
+    public MainActivityViewModel(MainContract mainView) {
         this.mainView = mainView;
     }
 
-    public void onAddClick(View btn){
-        Log.d("devsim","onAddClickEvent");
+    public void menuAddClick(View view) {
+        mainView.startEditActivityForAdd();
     }
 }

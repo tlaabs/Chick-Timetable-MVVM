@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">병아리\n시간표</string>
+
+    <string name="timetable_pref">timetablePref</string>
 </resources>

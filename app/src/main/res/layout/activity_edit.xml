@@ -1,9 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.EditActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</android.support.constraint.ConstraintLayout>
+    <data>
+
+        <variable
+            name="viewModel"
+            type="io.github.tlaabs.ctt.viewmodel.EditActivityViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        tools:context=".ui.view.EditActivity">
+
+        <include
+            layout="@layout/edit_actionbar"
+            bind:viewModel="@{viewModel}" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="3dp"
+                    android:text="과목명 :"
+                    android:textColor="@color/colorWeakBlack"
+                    android:textSize="@dimen/editTextSize" />
+
+                <EditText
+                    android:id="@+id/class_title_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:hint="Subject"
+                    android:textColor="@color/colorWeakBlack"
+                    android:textSize="@dimen/editTextSize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="3dp"
+                    android:text="강의실 :"
+                    android:textColor="@color/colorWeakBlack"
+                    android:textSize="@dimen/editTextSize" />
+
+                <EditText
+                    android:id="@+id/class_place_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:hint="Classroom"
+                    android:textColor="@color/colorWeakBlack"
+                    android:textSize="@dimen/editTextSize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="3dp"
+                    android:text="교수명 :"
+                    android:textColor="@color/colorWeakBlack"
+                    android:textSize="@dimen/editTextSize" />
+
+                <EditText
+                    android:id="@+id/professor_name_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:hint="Professor"
+                    android:textColor="@color/colorWeakBlack"
+                    android:textSize="@dimen/editTextSize" />
+
+                <!--<site.devsim.air.view.TimeBoxView-->
+                <!--android:id="@+id/time_box"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--/>-->
+                <Button
+                    android:id="@+id/add_time_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="시간 추가"
+                    android:textColor="@color/colorMain" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

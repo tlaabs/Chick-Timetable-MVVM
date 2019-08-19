@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".view.MainActivity">
+        tools:context=".ui.view.MainActivity">
 
         <include
             layout="@layout/main_actionbar"

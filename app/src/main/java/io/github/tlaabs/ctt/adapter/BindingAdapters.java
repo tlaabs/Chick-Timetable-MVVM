@@ -6,8 +6,4 @@ import com.github.tlaabs.timetableview.TimetableView;
 
 public class BindingAdapters {
 
-    @BindingAdapter({"idx"})
-    public static void setHighlight(final TimetableView timetable, final int idx){
-
-    }
 }
