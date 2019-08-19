@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="io.github.tlaabs.ctt.viewmodel.MainActivityViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,27 +28,26 @@
                 android:text="시간표"
                 android:textColor="@color/colorWeakBlack" />
 
-            <LinearLayout
-                android:id="@+id/addBtn"
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:gravity="center"
-                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_baseline_add_24px"
-                    android:backgroundTint="@color/colorMain"
-                    android:text="ADD" />
-            </LinearLayout>
+            <ImageButton
+                android:id="@+id/add_btn"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_alignParentRight="true"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:onClick="@{viewModel::onAddClick}"
+                android:scaleType="center"
+                android:src="@drawable/ic_baseline_add_24px"
+                android:tint="@color/colorMain" />
+
         </RelativeLayout>
 
+        <!--divider-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#e5e5e5"></LinearLayout>
+            android:background="#e5e5e5" />
     </LinearLayout>
 
-</merge>
+</layout>
