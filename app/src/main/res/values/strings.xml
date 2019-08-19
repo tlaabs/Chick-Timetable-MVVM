@@ -2,4 +2,13 @@
     <string name="app_name">병아리\n시간표</string>
 
     <string name="timetable_pref">timetablePref</string>
+
+    <string-array name="days">
+        <item>월</item>
+        <item>화</item>
+        <item>수</item>
+        <item>목</item>
+        <item>금</item>
+    </string-array>
+
 </resources>
