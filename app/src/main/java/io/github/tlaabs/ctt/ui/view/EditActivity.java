@@ -74,8 +74,8 @@ public class EditActivity extends BaseActivity implements EditContract, View.OnC
             viewModel.classTitle.set(schedule.getClassTitle());
             viewModel.classPlace.set(schedule.getClassPlace());
             viewModel.professorName.set(schedule.getProfessorName());
-            timeboxListAdapter.add(schedules);
         }
+        timeboxListAdapter.add(schedules);
     }
 
     private void setupViews() {
@@ -140,7 +140,7 @@ public class EditActivity extends BaseActivity implements EditContract, View.OnC
         for (Schedule schedule : schedules) {
             schedule.setClassTitle(viewModel.classTitle.get());
             schedule.setClassPlace(viewModel.classPlace.get());
-            schedule.setProfessorName(viewModel.classTitle.get());
+            schedule.setProfessorName(viewModel.professorName.get());
         }
     }
 

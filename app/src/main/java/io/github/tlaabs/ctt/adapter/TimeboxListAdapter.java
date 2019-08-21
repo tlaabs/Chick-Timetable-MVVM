@@ -34,6 +34,11 @@ public class TimeboxListAdapter extends RecyclerView.Adapter<TimeboxListAdapter.
         notifyDataSetChanged();
     }
 
+    public void add(Schedule received){
+        schedules.add(received);
+        notifyDataSetChanged();
+    }
+
     public void add(List<Schedule> received){
         for(Schedule schedule : received){
             schedules.add(schedule);

@@ -80,7 +80,8 @@ public class MainActivity extends BaseActivity implements MainContract {
                 }
                 break;
             case REQUEST_MODIFY:
-                int targetIdx = data.getIntExtra(EXTRA_IDX, -1);
+                int targetIdx = -1;
+                if(data != null) targetIdx = data.getIntExtra(EXTRA_IDX, -1);
                 if (resultCode == EditActivity.RESULT_OK_MODIFY) {
                     ArrayList<Schedule> modifiedItem = (ArrayList<Schedule>) data.getSerializableExtra(EXTRA_SCHEDULES);
                     timetableView.edit(targetIdx, modifiedItem);

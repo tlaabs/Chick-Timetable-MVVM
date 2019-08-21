@@ -111,6 +111,7 @@ public class TimeboxItemViewModel {
         startTimeMinute.set(schedule.getStartTime().getMinute());
         endTimeHour.set(schedule.getEndTime().getHour());
         endTimeMinute.set(schedule.getEndTime().getMinute());
+        updateTimeText();
     }
 
 }
