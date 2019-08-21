@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="io.github.tlaabs.ctt.viewmodel.DaySpinnerViewModel" />
+            type="io.github.tlaabs.ctt.viewmodel.TimeboxItemViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:orientation="horizontal"
         tools:context=".ui.view.EditActivity">
@@ -20,36 +21,44 @@
             android:id="@+id/day_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:spinnerMode="dialog"></Spinner>
+            android:onItemSelected="@{viewModel::onDaySpinnerItemSelected}"
+            android:spinnerMode="dialog" />
 
+
+        <TextView
+            android:id="@+id/start_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel::onStartTimeClick}"
+            android:text="@{viewModel.startTime}"
+            android:textSize="17sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
-            tools:text="오전 09:00" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:text=" ~ "
             android:textColor="@color/colorWeakBlack"
             android:textSize="17sp"
-            tools:text="~" />
+            tools:text=" ~ " />
 
         <TextView
+            android:id="@+id/end_time_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
-            tools:text="오전 10:00" />
+            android:onClick="@{viewModel::onEndTimeClick}"
+            android:text="@{viewModel.endTime}"
+            android:textSize="17sp" />
 
         <ImageButton
+            android:id="@+id/delete_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:background="@android:color/transparent"
             android:scaleType="center"
             android:src="@drawable/ic_baseline_clear_24dp"
-            android:tint="@color/colorWeakBlack" />
+            android:tint="@color/colorWeakBlack"
+            />
 
     </LinearLayout>
 </layout>

@@ -42,22 +42,25 @@
                 android:id="@+id/delete_btn"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:layout_toLeftOf="@id/add_btn"
+                android:layout_toLeftOf="@id/submit_btn"
                 android:background="@android:color/transparent"
                 android:scaleType="center"
                 android:src="@drawable/ic_baseline_delete_outline_24dp"
+                android:visibility="@{viewModel.deleteBtnVisibility}"
                 android:tint="@color/colorMain" />
 
 
             <ImageButton
-                android:id="@+id/add_btn"
+                android:id="@+id/submit_btn"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_alignParentRight="true"
                 android:background="@android:color/transparent"
                 android:scaleType="center"
                 android:src="@drawable/ic_baseline_done_24dp"
-                android:tint="@color/colorMain" />
+                android:tint="@color/colorMain"
+                android:onClick="onClick"
+                />
 
         </RelativeLayout>
 

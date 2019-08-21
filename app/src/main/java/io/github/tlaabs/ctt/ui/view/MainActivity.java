@@ -6,11 +6,16 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.github.tlaabs.timetableview.Schedule;
 import com.github.tlaabs.timetableview.TimetableView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.github.tlaabs.ctt.R;
 import io.github.tlaabs.ctt.contract.MainContract;
 import io.github.tlaabs.ctt.databinding.ActivityMainBinding;
+import io.github.tlaabs.ctt.model.EditMode;
 import io.github.tlaabs.ctt.util.DayUtil;
 import io.github.tlaabs.ctt.viewmodel.MainActivityViewModel;
 
@@ -20,20 +25,28 @@ public class MainActivity extends AppCompatActivity implements MainContract {
     public static final int REQUEST_MODIFY = 2;
 
     public static final String EXTRA_ALL_SCHEDULES = "all_schedules";
+    public static final String EXTRA_IDX = "idx";
+    public static final String EXTRA_MODE = "mode";
+    public static final String EXTRA_SCHEDULES = "schedules";
 
     private ActivityMainBinding binding;
+    private MainActivityViewModel viewModel;
+
     private TimetableView timetableView;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setViewModel(new MainActivityViewModel(this));
+        viewModel = new MainActivityViewModel(this);
+        binding.setViewModel(viewModel);
 
         setupViews();
     }
 
-    private void setupViews(){
+    private void setupViews() {
+
         timetableView = binding.timetable;
 
         timetableView.setHeaderHighlight(DayUtil.getToday());
@@ -41,15 +54,40 @@ public class MainActivity extends AppCompatActivity implements MainContract {
 
     @Override
     public void startEditActivityForAdd() {
-        Intent i = new Intent(this,EditActivity.class);
+        Intent i = new Intent(this, EditActivity.class);
+        i.putExtra(EXTRA_MODE, EditMode.ADD);
         i.putExtra(EXTRA_ALL_SCHEDULES, timetableView.getAllSchedulesInStickers());
-        startActivityForResult(i,REQUEST_ADD);
+        startActivityForResult(i, REQUEST_ADD);
     }
 
     @Override
+    public void startEditActivityForModify(int idx, List<Schedule> schedules) {
+        Intent i = new Intent(this, EditActivity.class);
+        i.putExtra(EXTRA_MODE, EditMode.MODIFY);
+        i.putExtra(EXTRA_ALL_SCHEDULES, timetableView.getAllSchedulesInStickersExceptIdx(idx));
+        i.putExtra(EXTRA_IDX, idx);
+        i.putExtra(EXTRA_SCHEDULES, (ArrayList<Schedule>) schedules);
+        startActivityForResult(i, REQUEST_MODIFY);
+    }
+
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        switch (requestCode){
+        switch (requestCode) {
             case REQUEST_ADD:
+                if (resultCode == EditActivity.RESULT_OK_ADD) {
+                    ArrayList<Schedule> addItem = (ArrayList<Schedule>) data.getSerializableExtra(EXTRA_SCHEDULES);
+                    timetableView.add(addItem);
+                }
+                break;
+            case REQUEST_MODIFY:
+                int targetIdx = data.getIntExtra(EXTRA_IDX, -1);
+                if (resultCode == EditActivity.RESULT_OK_MODIFY) {
+                    ArrayList<Schedule> modifiedItem = (ArrayList<Schedule>) data.getSerializableExtra(EXTRA_SCHEDULES);
+                    timetableView.edit(targetIdx, modifiedItem);
+                } else if (resultCode == EditActivity.RESULT_OK_DELETE) {
+                    timetableView.remove(targetIdx);
+                }
                 break;
         }
     }
