@@ -3,7 +3,6 @@ package io.github.tlaabs.ctt.ui.view;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.github.tlaabs.timetableview.Schedule;
@@ -13,13 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.tlaabs.ctt.R;
+import io.github.tlaabs.ctt.base.BaseActivity;
 import io.github.tlaabs.ctt.contract.MainContract;
 import io.github.tlaabs.ctt.databinding.ActivityMainBinding;
 import io.github.tlaabs.ctt.model.EditMode;
 import io.github.tlaabs.ctt.util.DayUtil;
 import io.github.tlaabs.ctt.viewmodel.MainActivityViewModel;
 
-public class MainActivity extends AppCompatActivity implements MainContract {
+public class MainActivity extends BaseActivity implements MainContract {
 
     public static final int REQUEST_ADD = 1;
     public static final int REQUEST_MODIFY = 2;
@@ -46,10 +46,9 @@ public class MainActivity extends AppCompatActivity implements MainContract {
     }
 
     private void setupViews() {
-
         timetableView = binding.timetable;
-
-        timetableView.setHeaderHighlight(DayUtil.getToday());
+        viewModel.setHeaderHighlight(DayUtil.getToday());
+        timetableView.load(saveManager.get());
     }
 
     @Override
@@ -90,5 +89,6 @@ public class MainActivity extends AppCompatActivity implements MainContract {
                 }
                 break;
         }
+        saveManager.save(timetableView.createSaveData());
     }
 }

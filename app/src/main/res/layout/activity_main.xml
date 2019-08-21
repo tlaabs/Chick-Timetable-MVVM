@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -19,7 +18,7 @@
 
         <include
             layout="@layout/main_actionbar"
-            bind:viewModel="@{viewModel}" />
+            app:viewModel="@{viewModel}" />
 
         <com.github.tlaabs.timetableview.TimetableView
             android:id="@+id/timetable"
@@ -27,6 +26,10 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             app:OnStickerSelectEventListener="@{viewModel::onStickerSelected}"
+            app:HeaderHighlight="@{viewModel.highlight}"
+            app:header_highlight_type="image"
+            app:header_highlight_image_size="36dp"
+            app:header_highlight_image="@drawable/ic_chick"
             />
     </LinearLayout>
 

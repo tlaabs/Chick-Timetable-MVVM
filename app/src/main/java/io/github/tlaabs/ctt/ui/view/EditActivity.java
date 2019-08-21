@@ -17,18 +17,17 @@ import com.github.tlaabs.timetableview.Schedule;
 import com.github.tlaabs.timetableview.Time;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import io.github.tlaabs.ctt.R;
-import io.github.tlaabs.ctt.adapter.DaySpinnerAdapter;
 import io.github.tlaabs.ctt.adapter.TimeboxListAdapter;
+import io.github.tlaabs.ctt.base.BaseActivity;
 import io.github.tlaabs.ctt.contract.EditContract;
 import io.github.tlaabs.ctt.databinding.ActivityEditBinding;
 import io.github.tlaabs.ctt.model.EditMode;
 import io.github.tlaabs.ctt.viewmodel.EditActivityViewModel;
 
-public class EditActivity extends AppCompatActivity implements EditContract, View.OnClickListener {
+public class EditActivity extends BaseActivity implements EditContract, View.OnClickListener {
     public static final int RESULT_OK_ADD = 1;
     public static final int RESULT_OK_MODIFY = 2;
     public static final int RESULT_OK_DELETE = 3;

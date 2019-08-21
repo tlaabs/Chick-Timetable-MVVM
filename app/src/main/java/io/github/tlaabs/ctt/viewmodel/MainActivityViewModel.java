@@ -5,8 +5,6 @@ import android.util.Log;
 import android.view.View;
 
 import com.github.tlaabs.timetableview.Schedule;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import io.github.tlaabs.ctt.contract.MainContract;
@@ -23,8 +21,11 @@ public class MainActivityViewModel {
         mainView.startEditActivityForAdd();
     }
 
-    //ref:https://stackoverflow.com/questions/32401150/data-bindings-with-custom-listeners-on-custom-view
-    public void onStickerSelected(int idx, List<Schedule> schedules){
-        mainView.startEditActivityForModify(idx,schedules);
+    public void onStickerSelected(int idx, List<Schedule> schedules) {
+        mainView.startEditActivityForModify(idx, schedules);
+    }
+
+    public void setHeaderHighlight(int day){
+        highlight.set(day);
     }
 }

@@ -5,7 +5,7 @@ public enum Days {
     private int value;
 
     private Days(int value) {
-        value = value;
+        this.value = value;
     }
 
     public int getValue() {

@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import io.github.tlaabs.ctt.R;
-
 public class SaveManager {
     private static final String KEY = "repo";
 
@@ -16,14 +14,14 @@ public class SaveManager {
         this.mContext = context;
     }
 
-    private static SaveManager getInstance(Context context) {
+    public static SaveManager getInstance(Context context) {
         if (instance == null) return instance = new SaveManager(context.getApplicationContext());
         return instance;
     }
 
     public String get() {
         SharedPreferences repo = PreferenceManager.getDefaultSharedPreferences(mContext);
-        String data = repo.getString(KEY, "");
+        String data = repo.getString(KEY, "{\"sticker\":[]}");
         return data;
     }
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +13,7 @@ import android.widget.Spinner;
 import com.github.tlaabs.timetableview.Schedule;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import io.github.tlaabs.ctt.R;
 import io.github.tlaabs.ctt.databinding.TimeboxItemBinding;
@@ -73,13 +70,8 @@ public class TimeboxListAdapter extends RecyclerView.Adapter<TimeboxListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull TimeboxHolder holder, final int position) {
-//        loadItem()
-        //변화가 생기면 hashData 변경
-        final Schedule schedule = schedules.get(position);
-//        HashMap 저장  = holder.viewModel.endTime;
-//        Log.d("devsim","position : " + position + "|" + holder.viewModel.day.get());
+        Schedule schedule = schedules.get(position);
         holder.loadItem(schedule);
-
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

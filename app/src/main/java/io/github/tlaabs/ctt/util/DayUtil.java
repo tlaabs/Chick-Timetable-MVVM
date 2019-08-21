@@ -1,5 +1,7 @@
 package io.github.tlaabs.ctt.util;
 
+import android.util.Log;
+
 import java.util.Calendar;
 
 import io.github.tlaabs.ctt.model.Days;
