@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface MainContract {
     void startEditActivityForAdd();
-
     void startEditActivityForModify(int idx, List<Schedule> schedules);
 }

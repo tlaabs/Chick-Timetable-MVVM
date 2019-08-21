@@ -3,6 +3,7 @@ package io.github.tlaabs.ctt.viewmodel;
 import android.app.TimePickerDialog;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TimePicker;
@@ -57,14 +58,17 @@ public class TimeboxItemViewModel {
     }
 
     private String getTimeString(int hourOfDay, int minute) {
-        String ampm;
-        String hourStr = hourOfDay + "";
-        String minuteStr = minute + "";
-        ampm = (hourOfDay < 12) ? "오전" : "오후";
-        if (hourOfDay < 10) hourStr = "0" + hourStr;
-        if (hourOfDay > 12) hourStr = "0" + (hourOfDay - 12);
-        if (minute < 10) minuteStr = "0" + minuteStr;
-        return ampm + " " + hourStr + ":" + minuteStr;
+        StringBuilder hourSb = new StringBuilder();
+        StringBuilder minuteSb = new StringBuilder();
+        StringBuilder resultSb = new StringBuilder();
+        String ampm = (hourOfDay < 12) ? "오전" : "오후";
+        if (hourOfDay < 10) hourSb.append(0).append(hourOfDay);
+        else if (hourOfDay > 12) hourSb.append(0).append(hourOfDay - 12);
+        else hourSb.append(hourOfDay);
+
+        if (minute < 10) minuteSb.append(0).append(minute);
+        else minuteSb.append(minute);
+        return resultSb.append(ampm).append(" ").append(hourSb).append(":").append(minuteSb).toString();
     }
 
     private void transInvalidateTime() {

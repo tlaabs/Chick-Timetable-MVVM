@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            app:header_title="@array/header_title"
             app:OnStickerSelectEventListener="@{viewModel::onStickerSelected}"
             app:HeaderHighlight="@{viewModel.highlight}"
             app:header_highlight_type="image"
